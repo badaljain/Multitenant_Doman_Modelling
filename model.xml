@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="1">
+		<struct>
+			<and abstract="true" mandatory="true" name="Start">
+				<or abstract="true" mandatory="true" name="Common">
+					<feature mandatory="true" name="ProjectName"/>
+					<feature mandatory="true" name="startDate"/>
+					<feature mandatory="true" name="Deadline"/>
+				</or>
+				<alt abstract="true" name="Tenant">
+					<and abstract="true" mandatory="true" name="Kanban">
+						<or abstract="true" mandatory="true" name="Board">
+							<feature mandatory="true" name="BoardName"/>
+							<or abstract="true" mandatory="true" name="Swimlane">
+								<feature mandatory="false" name="SwimlaneName"/>
+								<or abstract="true" mandatory="true" name="Task">
+									<feature mandatory="true" name="Title"/>
+									<feature mandatory="true" name="Description"/>
+									<feature mandatory="false" name="Status"/>
+									<feature mandatory="false" name="Size"/>
+									<feature mandatory="false" name="Assignee"/>
+									<feature mandatory="true" name="Priority"/>
+									<feature mandatory="false" name="LogTime"/>
+								</or>
+							</or>
+						</or>
+					</and>
+					<or abstract="true" mandatory="true" name="Gantter">
+						<or abstract="true" mandatory="False" name="Risk">
+							<feature mandatory="true" name="Risks"/>
+							<feature mandatory="false" name="RiskPriority"/>
+							<feature mandatory="false" name="Severity"/>
+							<feature mandatory="false" name="Response"/>
+							<feature mandatory="false" name="Probability"/>
+							<feature mandatory="false" name="Cause"/>
+						</or>
+						<or abstract="true" mandatory="true" name="Tasks">
+							<or abstract="true" mandatory="false" name="Predecessor">
+								<feature mandatory="false" name="Dependency"/>
+								<feature mandatory="false" name="Log"/>
+							</or>
+							<or abstract="true" mandatory="false" name="Resource">
+								<alt abstract="true" mandatory="true" name="Calendar">
+								<feature mandatory="true" name="Standard"/>
+								<feature mandatory="true" name="Night"/>
+								<feature mandatory="true" name="Hour24"/>
+								</alt>
+								<feature mandatory="false" name="ResourceName"/>
+								<feature mandatory="false" name="Type"/>
+								<feature mandatory="false" name="Cost"/>
+							</or>
+							<feature mandatory="taskName" name="TaskName"/>
+							<feature mandatory="false" name="TaskStartDate"/>
+							<feature mandatory="false" name="Duration"/>
+						</or>
+					</or>
+					<or abstract="true" mandatory="true" name="EasyBacklog">
+						<or abstract="true" mandatory="False" name="Sprint">
+							<feature mandatory="false" name="TeamSize"/>
+							<feature mandatory="true" name="SprintStatus"/>
+							<feature mandatory="true" name="SprintDuration"/>
+							<feature mandatory="true" name="Velocity"/>
+							<feature mandatory="true" name="SprintStartDate"/>
+						</or>
+						<or abstract="true" mandatory="true" name="Backlog">
+							<or abstract="true" mandatory="true" name="Story">
+								<feature mandatory="true" name="SprintId"/>
+								<feature mandatory="true" name="StoryCost"/>
+								<feature mandatory="true" name="Comment"/>
+								<feature mandatory="false" name="StoryDescription"/>
+								<feature mandatory="false" name="StoryStatus"/>
+								<feature mandatory="false" name="Points"/>
+								<feature mandatory="false" name="Days"/>
+							</or>
+							<feature mandatory="taskName" name="ThemeName"/>
+						</or>
+					</or>
+				</alt>
+			</and>
+		</struct>
+		<constraints/>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
